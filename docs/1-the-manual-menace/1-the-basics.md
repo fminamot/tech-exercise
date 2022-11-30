@@ -1,21 +1,23 @@
-## 🐌 The Basics - CRW, OCP & Helm
-## CodeReady Workspaces setup
+## 🐌 基礎 - CRW, OCP & Helm<!-- The Basics - CRW, OCP & Helm -->
+## CodeReady Workspaces のセットアップ
 
-1. Login to your CodeReadyWorkspace (CRW) Editor. The link to this will be provided by your instructor.
+1. <!--Login to your CodeReadyWorkspace (CRW) Editor. The link to this will be provided by your instructor.-->CodeReadyWorkspace (CRW) Editorにログインしてください。これへのリンクは講師から提供されます。
 
     ![crw](./images/crw.png)
 
     <p class="warn">
-    If the workspace has not been set up for you, you can create one from this devfile.
+    <!-- If the workspace has not been set up for you, you can create one from this devfile.-->ワークスペースが設定されていない場合、このdevfileから作成することができます。
     </br>
-    On CodeReady Workspaces, "Create Workspace > Custom Workspace".
+    <!-- On CodeReady Workspaces, "Create Workspace > Custom Workspace".-->CodeReady Workspaces 上で、"Create Workspace > Custom Workspace" を選択します。
     </br>
-    For OpenShift 4.9, 4.10 - Enter this URL to load the TL500 stack:</br>
+    <!-- For OpenShift 4.9, 4.10 - Enter this URL to load the TL500 stack:-->OpenShift 4.9, 4.10 では、TL500のスタックをロードするためにこの URL を入力してください。　
+　　</br>
     <span style="color:blue;"><a id=crw_dev_filelocation href=""></a></span>
     </br>
-    On DevSpaces Workspaces, "Add Workspace > Import from Git".
+    <!--On DevSpaces Workspaces, "Add Workspace > Import from Git".-->DevSpaces Workspaces では、"Add Workspace > Import from Git" を選択します。
     </br>
-    For OpenShift 4.11+ - Enter this URL to load the TL500 stack:</br>
+    <!--For OpenShift 4.11+ - Enter this URL to load the TL500 stack:-->OpenShift 4.11以上では、TL500のスタックをロードするためにこの URL を入力してください。　
+　　</br>
     <span style="color:blue;"><a id=crw_dev_filelocation_4.11 href=""></a></span>
     </p>
 
