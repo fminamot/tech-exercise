@@ -2,32 +2,32 @@
 
 ## CodeReady ワークスペースのセットアップ
 
-1. Login to your CodeReadyWorkspace (CRW) Editor. The link to this will be provided by your instructor.
+1. CodeReadyWorkspace (CRW) エディターにログインします。これへのリンクは、講師によって提供されます。
 
     ![クルー](./images/crw.png)
 
-     <p class="warn">  If the workspace has not been set up for you, you can create one from this devfile.    On CodeReady Workspaces, "Create Workspace &gt; Custom Workspace".    For OpenShift 4.9, 4.10 - Enter this URL to load the TL500 stack:  <span style="color:blue;"></span><a id="crw_dev_filelocation" href=""></a>    On DevSpaces Workspaces, "Add Workspace &gt; Import from Git".    For OpenShift 4.11+ - Enter this URL to load the TL500 stack:  <span style="color:blue;"></span><a id="crw_dev_filelocation_4.11" href=""></a>  </p>
+     <p class="warn">ワークスペースが設定されていない場合は、この devfile から作成できます。 CodeReady ワークスペースでは、「ワークスペースの作成 &gt; カスタム ワークスペース」。 OpenShift 4.9、4.10 の場合 - 次の URL を入力して TL500 スタックをロードします。<span style="color:blue;"></span><a id="crw_dev_filelocation" href=""></a> DevSpaces ワークスペースでは、「ワークスペースを追加 &gt; Git からインポート」します。 OpenShift 4.11+ の場合 - 次の URL を入力して TL500 スタックをロードします。<span style="color:blue;"></span><a id="crw_dev_filelocation_4.11" href=""></a></p>
     
 
-2. In your IDE (it may take some time to open ... ⏰☕️), open a new terminal by hitting `Terminal > Open Terminal in Specific Container > stack-tl500` from the menu.
+2. IDE で (開くのに時間がかかる場合があります ... ⏰☕️)、メニューから [ターミナル] `Terminal > Open Terminal in Specific Container > stack-tl500` ] をクリックして、新しいターミナルを開きます。
 
     ![新しい端末](./images/new-terminal.png)
 
-3. Notice the nifty default shell in the stack-tl500 container is `zsh` which rhymes with swish. It also has neat shortcuts and plugins - plus all the cool kids are using it 😎! We will be setting our environment variables in both `~/.zshrc` and `~/.bashrc` in case you want to switch to `bash`.
+3. stack-tl500 コンテナーの気の利いたデフォルト シェルは、swish と韻を踏む`zsh`であることに注意してください。また、きちんとしたショートカットとプラグインもあります - さらに、すべてのクールな子供たちがそれを使用しています 😎! `bash`に切り替えたい場合に備えて、 `~/.zshrc`と`~/.bashrc`の両方で環境変数を設定します。
 
-4. Setup your `TEAM_NAME` name in the environment of the CodeReadyWorkspace by running the command below. We will use the `TEAM_NAME` variable throughout the exercises so having it stored in our session means less changing of this variable throughout the exercises 💪. <strong data-md-type="double_emphasis">Ensure your `TEAM_NAME` consists of only lower case alphanumeric characters or '-', and must start and end with an alphanumeric character (e.g. 'my-name',  or '123-abc.)</strong>
+4. 以下のコマンドを実行して、CodeReadyWorkspace の環境で`TEAM_NAME`名をセットアップします。演習全体で`TEAM_NAME`変数を使用するため、セッションに保存すると、演習全体でこの変数の変更が少なくなります 💪. <strong data-md-type="double_emphasis">`TEAM_NAME`が小文字の英数字または「-」のみで構成されていることを確認し、英数字で開始および終了する必要があります (例: 「my-name」または「123-abc.」)。</strong>
 
     ```bash#test
     echo export TEAM_NAME="<TEAM_NAME>" | tee -a ~/.bashrc -a ~/.zshrc
     ```
 
-5. Add the `CLUSTER_DOMAIN` to the environment:
+5. `CLUSTER_DOMAIN`を環境に追加します。
 
     ```bash#test
     echo export CLUSTER_DOMAIN="<CLUSTER_DOMAIN>" | tee -a ~/.bashrc -a ~/.zshrc
     ```
 
-6. Add the `GIT_SERVER` to the environment:
+6. `GIT_SERVER`を環境に追加します。
 
     ```bash#test
     echo export GIT_SERVER="<GIT_SERVER>" | tee -a ~/.bashrc -a ~/.zshrc
@@ -42,16 +42,16 @@
     echo ${GIT_SERVER}
     ```
 
-8. Check if you can connect to OpenShift. Run the command below.
+8. OpenShift に接続できるかどうかを確認します。以下のコマンドを実行します。
 
-     <p class="tip">  ⛷️ <b>TIP</b> ⛷️ - Before you hit enter, make sure you change the username and password to match your team's login details. If your password includes special characters, put it in single quotes. ie: <strong>'A8y?Rpm!9+A3B/KG'</strong>  </p>
+     <p class="tip">⛷️<b>ヒント</b>⛷️ - Enter キーを押す前に、チームのログイン情報と一致するようにユーザー名とパスワードを変更してください。パスワードに特殊文字が含まれている場合は、一重引用符で囲みます。例: <strong>'A8y?Rpm!9+A3B/KG'</strong></p>
 
 
     ```bash
     oc login --server=https://api.${CLUSTER_DOMAIN##apps.}:6443 -u <USER_NAME> -p <PASSWORD>
     ```
 
-9. Check your user permissions in OpenShift by creating your team's `ci-cd` project.
+9. チームの`ci-cd`プロジェクトを作成して、OpenShift でのユーザー権限を確認します。
 
     ```bash#test
     oc new-project ${TEAM_NAME}-ci-cd || true
@@ -59,34 +59,34 @@
 
     ![新たなプロジェクト](./images/new-project.png)
 
-     <p class="warn">      ⛷️ <b>NOTE</b> ⛷️ - If you are working as a team and are using the same TEAM_NAME, you may receive a message saying this project already exists. One of your team mates would have already created this project. It's all good!  </p>
+     <p class="warn">⛷️<b>注</b>⛷️ - チームとして作業していて、同じ TEAM_NAME を使用している場合、このプロジェクトが既に存在するというメッセージが表示される場合があります。チーム メイトの 1 人がすでにこのプロジェクトを作成しているはずです。大丈夫だよー！</p>
     
 
 ### ヘルム 101
 
-> Helm is the package manager for Kubernetes. It provides a way to create templates for the Kubernetes YAML that defines our application. The Kubernetes resources such as `DeploymentConfig`, `Route` &amp; `Service` can be processed by supplying `values` to the templates. In Helm land, there are a few ways to do this. A package containing the templates and their default values is called a `chart`.
+> Helm は Kubernetes のパッケージ マネージャーです。アプリケーションを定義する Kubernetes YAML のテンプレートを作成する方法を提供します。 `DeploymentConfig` 、 `Route` &amp; `Service`などの Kubernetes リソースは、テンプレートに`values`を指定することで処理できます。 Helm ランドでは、これを行う方法がいくつかあります。テンプレートとそのデフォルト値を含むパッケージは`chart`と呼ばれます。
 
-Let's deploy a simple application using Helm.
+Helm を使用して簡単なアプリケーションをデプロイしてみましょう。
 
-1. Helm charts are packaged and stored in repositories. They can be added as dependencies of other charts or used directly. Let's add a chart repository now. The chart repository stores the version history of our charts as well as the packaged tar file.
+1. Helm チャートはパッケージ化され、リポジトリに保存されます。これらは、他のチャートの依存関係として追加するか、直接使用できます。では、チャート リポジトリを追加しましょう。チャート リポジトリには、チャートのバージョン履歴とパッケージ化された tar ファイルが保存されます。
 
     ```bash#test
     helm repo add tl500 https://rht-labs.com/todolist/
     ```
 
-2. Let's install a chart from this repo. First search the repository to see what is available.
+2. このリポジトリからチャートをインストールしましょう。まずリポジトリを検索して、利用可能なものを確認します。
 
     ```bash#test
     helm search repo todolist
     ```
 
-    Now install the latest version. Helm likes to give each install a release, for convenience we've set ours to `my`. This will add a prefix of `my-` to all the resources that are created.
+    ここで最新バージョンをインストールします。 Helm は各インストールにリリースを与えるのが好きです。便宜上、私たちのものを`my`設定しました。これにより、作成されるすべてのリソースに`my-`のプレフィックスが追加されます。
 
     ```bash#test
     helm install my tl500/todolist --namespace ${TEAM_NAME}-ci-cd || true
     ```
 
-3. Open the application up in the browser to verify it's up and running. Here's a handy one-liner to get the address of the app
+3. ブラウザでアプリケーションを開き、アプリケーションが稼働中であることを確認します。これは、アプリのアドレスを取得するための便利なワンライナーです。
 
     ```bash#test
     echo https://$(oc get route/my-todolist -n ${TEAM_NAME}-ci-cd --template='{{.spec.host}}')
